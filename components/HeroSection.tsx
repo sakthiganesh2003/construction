@@ -63,9 +63,8 @@ export default function HeroSection() {
 
               {/* Sub-text */}
               <p className="text-slate-400 text-lg sm:text-xl leading-relaxed max-w-lg">
-                From precision bench scales to 150-tonne weighbridges — Essae Digitronics delivers
-                measurement solutions trusted by 50,000+ clients across manufacturing, logistics, retail,
-                dairy, and infrastructure sectors.
+                From heavy steel weighbridges to automated crusher production systems — Veera Blue Metals delivers
+                measurement solutions trusted across quarries, mining, construction, and infrastructure sectors.
               </p>
 
               {/* CTA Buttons */}

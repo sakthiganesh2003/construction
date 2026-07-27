@@ -65,14 +65,13 @@ export default function Footer() {
                 </svg>
               </div>
               <div>
-                <span className="text-white font-display font-bold text-xl leading-none block">Essae</span>
-                <span className="text-orange-400 text-xs tracking-widest uppercase font-medium">Digitronics</span>
+                <span className="text-white font-display font-bold text-xl leading-none block">Veera</span>
+                <span className="text-orange-400 text-xs tracking-widest uppercase font-medium">Blue Metals</span>
               </div>
             </Link>
 
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              India&apos;s leading manufacturer of precision weighbridges, weighing solutions, and industrial instruments.
-              Engineering excellence for 40+ years across 30+ countries.
+              Leading provider of heavy weighbridges, quarry weighing solutions, and industrial measurement instruments.
             </p>
 
             {/* Contact info */}
@@ -131,7 +130,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/8 py-6 flex flex-wrap items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} Essae Digitronics Pvt. Ltd. All rights reserved.
+            © {new Date().getFullYear()} Veera Blue Metals. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link href="#" className="text-slate-500 hover:text-slate-300 text-xs transition-colors duration-200">

@@ -16,21 +16,21 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Products | Essae Digitronics – Precision Weighing & Measurement Solutions",
+  title: "Veera Blue Metals – Heavy Weighbridges & Quarry Weighing Solutions",
   description:
-    "Explore Essae Digitronics' complete range of precision weighing scales, industrial weighbridges, retail POS systems, milk analysers, GPS clocks, and crane scales for every industry.",
+    "Veera Blue Metals provides precision steel & concrete weighbridges, weigh pads, weigh-in-motion systems, and industrial weighing solutions for quarries, mining, and heavy construction.",
   keywords: [
-    "weighing scales",
-    "industrial scales",
+    "Veera Blue Metals",
     "weighbridge",
-    "POS system",
-    "milk analyser",
-    "GPS clock",
-    "Essae Digitronics",
+    "quarry weighing",
+    "stone crusher scale",
+    "steel weighbridge",
+    "concrete weighbridge",
+    "industrial weighing",
   ],
   openGraph: {
-    title: "Products | Essae Digitronics",
-    description: "Precision weighing and measurement solutions for every industry.",
+    title: "Veera Blue Metals",
+    description: "Heavy Weighbridges & Industrial Quarry Weighing Solutions.",
     type: "website",
   },
 };
