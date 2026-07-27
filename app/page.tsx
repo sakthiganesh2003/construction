@@ -38,13 +38,13 @@ export default function ProductsPage() {
         {/* Hero Section */}
         <HeroSection />
 
-        {/* Stats Bar */}
-        <div className="reveal-on-scroll">
+        {/* Stats Bar (Fades in from Left on scroll) */}
+        <div className="reveal-fade-left">
           <StatsBar />
         </div>
 
-        {/* Category Cards Overview */}
-        <div className="reveal-on-scroll">
+        {/* Category Cards Overview (Fades in from Right on scroll) */}
+        <div className="reveal-fade-right">
           <CategoryCards
             onCategorySelect={handleCategorySelect}
             selectedCategory={selectedCategory}
@@ -63,7 +63,7 @@ export default function ProductsPage() {
             resultCount={resultCount}
           />
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 reveal-zoom">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
               <div>
                 <h2
@@ -105,8 +105,8 @@ export default function ProductsPage() {
           </div>
         </section>
 
-        {/* CTA Banner */}
-        <div className="reveal-on-scroll">
+        {/* CTA Banner (Slides in from Left on scroll) */}
+        <div className="reveal-slide-left">
           <CTABanner />
         </div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, PlayCircle, Award, Globe, Users, Factory } from 'lucide-react';
 
 const stats = [
@@ -40,8 +40,8 @@ export default function HeroSection() {
       <div className="relative z-10 flex-1 flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column – Text */}
-            <div className={`space-y-8 ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            {/* Left Column – Text (Fades In Left) */}
+            <div className={`space-y-8 ${mounted ? 'animate-fade-in-left' : 'opacity-0'}`}>
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-orange-500/30 text-orange-400 text-sm font-medium">
                 <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
@@ -99,8 +99,8 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Right Column – Visual */}
-            <div className={`hidden lg:flex justify-center ${mounted ? 'animate-fade-in delay-300' : 'opacity-0'}`}>
+            {/* Right Column – Visual (Fades In Right) */}
+            <div className={`hidden lg:flex justify-center ${mounted ? 'animate-fade-in-right delay-200' : 'opacity-0'}`}>
               <div className="relative w-full max-w-md">
                 {/* Main card */}
                 <div className="glass rounded-3xl p-8 border border-white/10 animate-float">

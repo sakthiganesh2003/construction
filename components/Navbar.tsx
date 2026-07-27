@@ -47,10 +47,10 @@ export default function Navbar() {
             </div>
             <div>
               <span className="text-white font-display font-bold text-base leading-none block group-hover:text-orange-400 transition-colors duration-200">
-                Essae
+                Veera 
               </span>
               <span className="text-orange-400 text-[10px] font-semibold tracking-widest uppercase block -mt-0.5">
-                Digitronics
+                Blue Metals
               </span>
             </div>
           </Link>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function ScrollRevealProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -12,15 +12,28 @@ export default function ScrollRevealProvider({ children }: { children: React.Rea
           }
         });
       },
-      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -20px 0px' }
     );
 
-    const elements = document.querySelectorAll('.reveal-on-scroll');
-    elements.forEach((el) => observer.observe(el));
+    const observeElements = () => {
+      const elements = document.querySelectorAll(
+        '.reveal-on-scroll, .reveal-fade-left, .reveal-fade-right, .reveal-slide-left, .reveal-slide-right, .reveal-zoom'
+      );
+      elements.forEach((el) => observer.observe(el));
+    };
+
+    observeElements();
+
+    // Re-observe if DOM changes dynamically
+    const mutationObserver = new MutationObserver(() => {
+      observeElements();
+    });
+
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      elements.forEach((el) => observer.unobserve(el));
       observer.disconnect();
+      mutationObserver.disconnect();
     };
   }, []);
 
