@@ -61,12 +61,12 @@ export default function ProductGrid({
 
   if (filtered.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-32 text-center">
-        <div className="w-20 h-20 rounded-2xl bg-slate-100 flex items-center justify-center mb-6">
-          <Package size={36} className="text-slate-300" />
+      <div className="flex flex-col items-center justify-center py-20 text-center">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-slate-100 flex items-center justify-center mb-4 sm:mb-6">
+          <Package size={32} className="text-slate-300" />
         </div>
-        <h3 className="font-display font-bold text-2xl text-slate-700 mb-2">No products found</h3>
-        <p className="text-slate-400 max-w-sm">
+        <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-700 mb-2">No products found</h3>
+        <p className="text-slate-400 text-sm max-w-sm">
           Try adjusting your search or filter to find what you&apos;re looking for.
         </p>
       </div>
@@ -76,7 +76,7 @@ export default function ProductGrid({
   return (
     <div
       id="products-grid"
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+      className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6"
     >
       {filtered.map((product, index) => (
         <ProductCard key={product.id} product={product} index={index} />
