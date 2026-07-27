@@ -5,34 +5,36 @@ const footerLinks = [
   {
     title: 'Products',
     links: [
-      { label: 'Industrial Scales', href: '#industrial-scales' },
-      { label: 'Weighbridges', href: '#weighbridges' },
-      { label: 'Retail POS Systems', href: '#retail-pos' },
-      { label: 'Milk Analysers', href: '#milk-analysers' },
-      { label: 'GPS Clocks', href: '#gps-clocks' },
-      { label: 'Crane Systems', href: '#crane-systems' },
+      { label: 'Steel Weighbridge', href: '/products/steel-weighbridge' },
+      { label: 'Concrete Weighbridge', href: '/products/concrete-weighbridge' },
+      { label: 'Tuff Track Weighbridge', href: '/products/tuff-track-weighbridge' },
+      { label: 'Weigh Pads', href: '/products/weigh-pads' },
+      { label: 'Flexi Weighbridge', href: '/products/flexi-weighbridge' },
+      { label: 'Rail Weigh in Motion', href: '/products/rail-weigh-in-motion' },
+      { label: 'Truck Weigh In Motion', href: '/products/truck-weigh-in-motion' },
+      { label: 'Digital Weighbridge', href: '/products/digital-weighbridge' },
     ],
   },
   {
     title: 'Solutions',
     links: [
-      { label: 'Manufacturing', href: '#' },
-      { label: 'Logistics & Warehousing', href: '#' },
-      { label: 'Food & Dairy', href: '#' },
-      { label: 'Pharmaceuticals', href: '#' },
-      { label: 'Infrastructure', href: '#' },
-      { label: 'Retail & FMCG', href: '#' },
+      { label: 'Automatic Weighing Solution', href: '/products/automatic-weighing-solution' },
+      { label: 'Crusher Production Management', href: '/products/crusher-production-management' },
+      { label: 'Intelligent Weighing Terminal', href: '/products/intelligent-weighing-terminal' },
+      { label: 'Silo Weighing Solutions', href: '/products/silo-weighing-solutions' },
+      { label: 'Granite Weighing Solutions', href: '/products/granite-weighing-solutions' },
+      { label: 'Wheel Loader Weighing', href: '/products/wheel-loader-weighing-solutions' },
+      { label: 'AccuTrol', href: '/products/accutrol' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { label: 'About Essae', href: '#' },
+      { label: 'About Essae', href: '/#about' },
       { label: 'Certifications', href: '#' },
-      { label: 'Career Openings', href: '#' },
-      { label: 'News & Updates', href: '#' },
       { label: 'Dealer Network', href: '#' },
-      { label: 'Contact Us', href: '#contact' },
+      { label: 'News & Updates', href: '#' },
+      { label: 'Contact Us', href: '/#contact' },
     ],
   },
 ];
@@ -69,7 +71,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              India&apos;s leading manufacturer of precision weighing systems and measurement instruments.
+              India&apos;s leading manufacturer of precision weighbridges, weighing solutions, and industrial instruments.
               Engineering excellence for 40+ years across 30+ countries.
             </p>
 
@@ -110,12 +112,12 @@ export default function Footer() {
               <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
                 {col.title}
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-slate-400 hover:text-orange-400 text-sm transition-colors duration-200"
+                      className="text-slate-400 hover:text-orange-400 text-xs sm:text-sm transition-colors duration-200"
                     >
                       {link.label}
                     </Link>
