@@ -9,22 +9,23 @@ import {
 
 const navGroups = [
   {
-    label: 'General',
+    label: 'Weighbridge',
     items: [
       { label: 'Dashboard',    href: '/admin',            icon: LayoutDashboard },
+      { label: 'Records',       href: '/admin/weighment',     icon: Layers },
+      { label: 'Vehicles',      href: '/admin/vehicles',      icon: Car },
+      { label: 'Materials',     href: '/admin/materials',     icon: Package },
+      { label: 'New Weighment', href: '/admin/weighment/new', icon: Scale },
+    ],
+  },
+  {
+    label: 'General',
+    items: [
       { label: 'Products',     href: '/admin/products',   icon: Package },
       { label: 'Solutions',    href: '/admin/solutions',  icon: Zap },
       { label: 'Categories',   href: '/admin/categories', icon: FolderOpen },
       { label: 'Inquiries',    href: '/admin/inquiries',  icon: MessageSquare },
-    ],
-  },
-  {
-    label: 'Weighbridge',
-    items: [
-      { label: 'New Weighment', href: '/admin/weighment/new', icon: Scale },
-      { label: 'Records',       href: '/admin/weighment',     icon: Layers },
-      { label: 'Vehicles',      href: '/admin/vehicles',      icon: Car },
-      { label: 'Materials',     href: '/admin/materials',     icon: Package },
+
     ],
   },
   {
