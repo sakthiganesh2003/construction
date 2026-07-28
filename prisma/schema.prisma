@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Vehicle {
+  id            String      @id @default(cuid())
+  vehicleNumber String      @unique
+  driverName    String
+  ownerName     String
+  tareWeight    Float
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  weighments    Weighment[]
+}
+
+model Material {
+  id          String      @id @default(cuid())
+  name        String      @unique
+  unit        String      @default("Ton")
+  ratePerTon  Float
+  isActive    Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  weighments  Weighment[]
+}
+
+model Weighment {
+  id            String    @id @default(cuid())
+  slipNumber    String    @unique
+  vehicleNumber String
+  driverName    String
+  partyName     String
+  materialName  String
+  grossWeight   Float
+  tareWeight    Float
+  netWeight     Float
+  ratePerTon    Float
+  amount        Float
+  remarks       String?
+  createdAt     DateTime  @default(now())
+
+  vehicle    Vehicle?  @relation(fields: [vehicleId],  references: [id])
+  vehicleId  String?
+  material   Material  @relation(fields: [materialId], references: [id])
+  materialId String
+}

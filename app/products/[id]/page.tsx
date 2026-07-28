@@ -18,7 +18,7 @@ export async function generateMetadata(props: PageProps<'/products/[id]'>): Prom
   const product = products.find((p) => p.id === id);
   if (!product) return { title: 'Product Not Found' };
   return {
-    title: `${product.name} ${product.model} | Essae Digitronics`,
+    title: `${product.name} ${product.model} | Veera Blue Metals`,
     description: product.shortDescription,
   };
 }
@@ -39,7 +39,7 @@ export default async function ProductDetailPage(props: PageProps<'/products/[id]
       <Navbar />
 
       {/* Hero / Image Banner */}
-      <section className="relative h-[55vh] min-h-[420px] bg-navy-900 overflow-hidden">
+      <section className="relative min-h-[420px] bg-navy-900 overflow-hidden">
         <Image
           src={product.imageSrc}
           alt={`${product.name} – ${product.model}`}
@@ -55,7 +55,7 @@ export default async function ProductDetailPage(props: PageProps<'/products/[id]
         {/* Content */}
         <div className="relative z-10 h-full flex flex-col justify-end max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 pt-28">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-slate-400 mb-6" aria-label="Breadcrumb">
+          <nav className="flex items-center gap-2 text-sm text-slate-400 mb-6 flex-wrap" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-orange-400 transition-colors duration-200">Home</Link>
             <span>/</span>
             <Link href="/#products" className="hover:text-orange-400 transition-colors duration-200">Products</Link>
@@ -63,7 +63,7 @@ export default async function ProductDetailPage(props: PageProps<'/products/[id]
             <span className="text-white">{product.name}</span>
           </nav>
 
-          <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
             <div>
               {/* Category + status badges */}
               <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -82,7 +82,7 @@ export default async function ProductDetailPage(props: PageProps<'/products/[id]
                 )}
               </div>
 
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3">
+              <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3">
                 {product.name}
               </h1>
               <p className="text-orange-400 font-mono font-bold text-xl tracking-wider">
