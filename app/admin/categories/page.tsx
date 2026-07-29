@@ -55,79 +55,99 @@ export default function CategoriesAdminPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <p className="text-slate-400 text-sm">Manage product and solution categories.</p>
-        <button onClick={openAdd} className="flex items-center justify-center gap-2 px-4 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-xl transition-all hover:shadow-lg hover:shadow-orange-500/25 shrink-0">
+        <p className="text-slate-500 text-sm">Manage product and solution categories.</p>
+        <button onClick={openAdd} className="flex items-center justify-center gap-2 px-4 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-xl transition-all shadow-md shadow-orange-500/20 shrink-0 cursor-pointer">
           <Plus size={16} /> Add Category
         </button>
       </div>
 
       {saved && (
-        <div className="flex items-center gap-2 px-4 py-3 bg-green-500/15 border border-green-500/25 rounded-xl text-green-400 text-sm">
+        <div className="flex items-center gap-2 px-4 py-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-sm font-semibold">
           <Check size={16} /> Category saved!
         </div>
       )}
 
-      <div className="grid sm:grid-cols-2 gap-4">
-        {items.map(cat => (
-          <div key={cat.id} className="bg-white/3 border border-white/8 rounded-2xl p-5 group hover:border-white/15 transition-all">
-            <div className="flex items-start justify-between mb-3">
-              <div className="flex items-center gap-3">
-                <span className="text-3xl">{cat.icon}</span>
-                <div>
-                  <h3 className="text-white font-bold text-base">{cat.name}</h3>
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${cat.type === 'Products' ? 'bg-blue-500/15 text-blue-400' : 'bg-orange-500/15 text-orange-400'}`}>
-                    {cat.type}
-                  </span>
-                </div>
-              </div>
-              <div className="flex gap-2 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
-                <button onClick={() => openEdit(cat)} className="p-1.5 rounded-lg bg-blue-500/15 text-blue-400 hover:bg-blue-500/25 transition-all cursor-pointer"><Pencil size={14} /></button>
-                <button onClick={() => setDeleteId(cat.id)} className="p-1.5 rounded-lg bg-red-500/15 text-red-400 hover:bg-red-500/25 transition-all cursor-pointer"><Trash2 size={14} /></button>
-              </div>
-            </div>
-            <p className="text-slate-400 text-sm">{cat.description}</p>
-          </div>
-        ))}
+      <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
+        <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+          <h2 className="text-slate-900 font-bold text-sm">Categories ({items.length})</h2>
+          <span className="text-slate-400 text-xs font-semibold sm:hidden">← Swipe horizontally →</span>
+        </div>
+        <div className="overflow-x-auto w-full">
+          <table className="w-full text-left min-w-[640px]">
+            <thead>
+              <tr className="border-b border-slate-100 bg-slate-50/80 text-slate-500 text-xs font-semibold">
+                <th className="px-5 py-3.5">Icon & Name</th>
+                <th className="px-5 py-3.5">Type</th>
+                <th className="px-5 py-3.5">Description</th>
+                <th className="px-5 py-3.5 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {items.map(cat => (
+                <tr key={cat.id} className="hover:bg-slate-50/70 transition-colors">
+                  <td className="px-5 py-4">
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{cat.icon}</span>
+                      <span className="text-slate-900 font-bold text-sm">{cat.name}</span>
+                    </div>
+                  </td>
+                  <td className="px-5 py-4">
+                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full inline-block ${cat.type === 'Products' ? 'bg-sky-50 text-sky-700 border border-sky-200/80' : 'bg-orange-50 text-orange-700 border border-orange-200/80'}`}>
+                      {cat.type}
+                    </span>
+                  </td>
+                  <td className="px-5 py-4 text-slate-600 text-xs font-medium max-w-xs truncate">{cat.description}</td>
+                  <td className="px-5 py-4 text-right">
+                    <div className="flex items-center justify-end gap-2">
+                      <button onClick={() => openEdit(cat)} className="p-1.5 rounded-lg bg-sky-50 text-sky-600 border border-sky-100 hover:bg-sky-100 transition-all cursor-pointer" title="Edit"><Pencil size={14} /></button>
+                      <button onClick={() => setDeleteId(cat.id)} className="p-1.5 rounded-lg bg-red-50 text-red-600 border border-red-100 hover:bg-red-100 transition-all cursor-pointer" title="Delete"><Trash2 size={14} /></button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {drawerOpen && (
         <div className="fixed inset-0 z-50 flex">
-          <div className="flex-1 bg-black/50 backdrop-blur-sm" onClick={closeDrawer} />
-          <div className="w-full max-w-md bg-[#0c1a2e] border-l border-white/10 h-full overflow-y-auto flex flex-col">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-              <h2 className="text-white font-bold text-base">{editId ? 'Edit Category' : 'Add Category'}</h2>
-              <button onClick={closeDrawer} className="text-slate-400 hover:text-white"><X size={20} /></button>
+          <div className="flex-1 bg-slate-900/40 backdrop-blur-xs" onClick={closeDrawer} />
+          <div className="w-full max-w-md bg-white border-l border-slate-200 h-full overflow-y-auto flex flex-col shadow-2xl">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+              <h2 className="text-slate-900 font-bold text-base">{editId ? 'Edit Category' : 'Add Category'}</h2>
+              <button onClick={closeDrawer} className="text-slate-400 hover:text-slate-700 cursor-pointer"><X size={20} /></button>
             </div>
             <div className="flex-1 px-6 py-5 space-y-4">
               <div>
-                <label className="text-slate-400 text-xs font-medium block mb-1.5">Category Name *</label>
+                <label className="text-slate-700 text-xs font-semibold block mb-1.5">Category Name *</label>
                 <input value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  className="w-full bg-white/5 border border-white/10 text-white text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-orange-500/50 transition-all" />
+                  className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all" />
               </div>
               <div>
-                <label className="text-slate-400 text-xs font-medium block mb-1.5">Type</label>
+                <label className="text-slate-700 text-xs font-semibold block mb-1.5">Type</label>
                 <select value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))}
-                  className="w-full bg-white/5 border border-white/10 text-white text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-orange-500/50 transition-all">
-                  <option value="Products" className="bg-[#0c1a2e]">Products</option>
-                  <option value="Solutions" className="bg-[#0c1a2e]">Solutions</option>
+                  className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all cursor-pointer">
+                  <option value="Products">Products</option>
+                  <option value="Solutions">Solutions</option>
                 </select>
               </div>
               <div>
-                <label className="text-slate-400 text-xs font-medium block mb-1.5">Description</label>
+                <label className="text-slate-700 text-xs font-semibold block mb-1.5">Description</label>
                 <textarea value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} rows={3}
-                  className="w-full bg-white/5 border border-white/10 text-white text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-orange-500/50 transition-all resize-none" />
+                  className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all resize-none" />
               </div>
               <div>
-                <label className="text-slate-400 text-xs font-medium block mb-1.5">Icon (Emoji)</label>
+                <label className="text-slate-700 text-xs font-semibold block mb-1.5">Icon (Emoji)</label>
                 <input value={form.icon} onChange={e => setForm(f => ({ ...f, icon: e.target.value }))}
-                  className="w-24 bg-white/5 border border-white/10 text-white text-xl text-center rounded-xl px-4 py-2.5 focus:outline-none focus:border-orange-500/50" />
+                  className="w-24 bg-slate-50 border border-slate-200 text-slate-900 text-xl text-center rounded-xl px-4 py-2.5 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20" />
               </div>
             </div>
-            <div className="px-6 py-4 border-t border-white/10 flex gap-3">
-              <button onClick={handleSubmit} className="flex-1 py-3 bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold rounded-xl transition-all">
+            <div className="px-6 py-4 border-t border-slate-100 flex gap-3">
+              <button onClick={handleSubmit} className="flex-1 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold rounded-xl transition-all shadow-xs cursor-pointer">
                 {editId ? 'Save Changes' : 'Add Category'}
               </button>
-              <button onClick={closeDrawer} className="px-5 py-3 bg-white/5 border border-white/10 text-slate-300 text-sm font-semibold rounded-xl transition-all">Cancel</button>
+              <button onClick={closeDrawer} className="px-5 py-2.5 bg-slate-100 border border-slate-200 text-slate-700 text-sm font-semibold rounded-xl transition-all hover:bg-slate-200 cursor-pointer">Cancel</button>
             </div>
           </div>
         </div>
@@ -135,14 +155,14 @@ export default function CategoriesAdminPage() {
 
       {deleteId && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setDeleteId(null)} />
-          <div className="relative bg-[#0c1a2e] border border-white/10 rounded-2xl p-6 w-full max-w-sm text-center">
-            <Trash2 size={28} className="text-red-400 mx-auto mb-3" />
-            <h3 className="text-white font-bold mb-2">Delete Category?</h3>
-            <p className="text-slate-400 text-sm mb-6">This cannot be undone.</p>
+          <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-xs" onClick={() => setDeleteId(null)} />
+          <div className="relative bg-white border border-slate-200 rounded-2xl p-6 w-full max-w-sm text-center shadow-2xl">
+            <Trash2 size={28} className="text-red-500 mx-auto mb-3" />
+            <h3 className="text-slate-900 font-bold text-base mb-2">Delete Category?</h3>
+            <p className="text-slate-500 text-sm mb-6">This cannot be undone.</p>
             <div className="flex gap-3">
-              <button onClick={handleDelete} className="flex-1 py-2.5 bg-red-500 text-white font-semibold rounded-xl text-sm">Delete</button>
-              <button onClick={() => setDeleteId(null)} className="flex-1 py-2.5 bg-white/5 border border-white/10 text-slate-300 font-semibold rounded-xl text-sm">Cancel</button>
+              <button onClick={handleDelete} className="flex-1 py-2.5 bg-red-600 text-white font-semibold rounded-xl text-sm hover:bg-red-700 cursor-pointer">Delete</button>
+              <button onClick={() => setDeleteId(null)} className="flex-1 py-2.5 bg-slate-100 border border-slate-200 text-slate-700 font-semibold rounded-xl text-sm hover:bg-slate-200 cursor-pointer">Cancel</button>
             </div>
           </div>
         </div>

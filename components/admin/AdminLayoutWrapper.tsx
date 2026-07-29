@@ -8,7 +8,7 @@ export default function AdminLayoutWrapper({ children }: { children: React.React
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#0a1628] text-white flex">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex">
       {/* Sidebar */}
       <AdminSidebar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
 
